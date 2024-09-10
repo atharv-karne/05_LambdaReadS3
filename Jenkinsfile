@@ -6,7 +6,6 @@ pipeline{
                 script{
                     sh 'echo "Running terraform init"'
                     sh 'terraform init'
-                    sh 'terraform plan'
 
                 }
             }
@@ -16,6 +15,7 @@ pipeline{
             steps{
                 withCredentials([aws(credentialsId:"AWS-Cred" , region:"ap-south-1")]){
                 script{
+                    sh 'terraform plan'
                     sh 'terraform apply -auto-approve'
                 }
                 }
