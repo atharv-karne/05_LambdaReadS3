@@ -21,15 +21,5 @@ pipeline{
                 }
             }
         }
-        stage('Terraform destroy')
-        {
-            steps{
-                withCredentials([aws(credentialsId:"AWS-Cred" , region:"ap-south-1")]){
-                script{
-                    sh 'terraform destroy'
-                }
-                }
-            }
-        }
     }
 }
